@@ -31,6 +31,7 @@
     "css-loader": "^0.28.11",
     "es6-promise": "^4.2.4",
     "foundation-sites": "^6.4.4-rc1",
+    "iotacss": "^1.6.0",
     "isomorphic-fetch": "^2.2.1",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
