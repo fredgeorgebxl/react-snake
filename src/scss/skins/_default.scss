@@ -1,0 +1,59 @@
+.default{
+    background-color: #ccc;
+
+    .cell-0{ background-color: white;}
+    .cell-1, .cell-2, .cell-3{
+        background-color:white; 
+        background-image: url('../assets/default-textures.png')
+    }
+
+    .cell-1{
+        &.up{
+            background-position: -20px 0px;
+        }
+        &.down{
+            background-position: 0px 0px;
+        }
+        &.left{
+            background-position: -10px 0px;
+        }
+        &.right{
+            background-position: -30px 0px;
+        }
+    }
+    .cell-2{
+        background-position: 0px -10px;
+        &.ud{
+            background-position: 0px -10px;
+        }
+        &.lr{
+            background-position: -10px -10px;
+        }
+        &.ul{
+            background-position: -20px -10px;
+        }
+        &.ur{
+            background-position: -30px -10px;
+        }
+        &.ld{
+            background-position: -40px -10px;
+        }
+        &.rd{
+            background-position: 0px -20px;
+        }
+        &.up{
+            background-position: 0px -30px;
+        }
+        &.down{
+            background-position: -20px -30px;
+        }
+        &.left{
+            background-position: -30px -30px;
+        }
+        &.right{
+            background-position: -10px -30px;
+        }
+    }
+    .cell-3{background-position: -40px -40px;}
+
+}
