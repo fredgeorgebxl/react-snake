@@ -16,11 +16,11 @@ const contains = (a, obj) => {
 
 const getExtType = (first, second) => {
     var type = TYPE_UP;
-    if (first.x < second.x){
+    if ((first.x < second.x && second.x - first.x == 1) || (first.x > second.x && second.x - first.x < -1)){
         type = TYPE_LEFT;
-    } else if (first.x > second.x){
+    } else if ((first.x > second.x && first.x - second.x == 1) || (first.x < second.x && first.x - second.x < -1)){
         type = TYPE_RIGHT;
-    } else if (first.y > second.y){
+    } else if ((first.y > second.y && first.y - second.y == 1) || (first.y < second.y && first.y - second.y < -1)){
         type = TYPE_DOWN;
     }
     return type;
@@ -33,26 +33,50 @@ const getSegmentType = (posBefore, posAfter, pos) => {
     } else if (posBefore.x != posAfter.x && posBefore.y == posAfter.y){
         type = TYPE_LEFT_RIGHT;
     } else if (posBefore.x < pos.x){
-        if (pos.y > posAfter.y){
+        if ((pos.y > posAfter.y && posBefore.y - posAfter.y == 1 && posAfter.x - posBefore.x == 1) || ( pos.y < posAfter.y && posBefore.y - posAfter.y < -1 && posAfter.x - posBefore.x == 1)){
             type = TYPE_UP_LEFT;
+        } else if (posBefore.x - posAfter.x < -1) {
+            if ((posAfter.y < pos.y && pos.y - posAfter.y == 1) || (posAfter.y > pos.y && pos.y - posAfter.y < -1) ){
+                type = TYPE_UP_RIGHT;
+            } else {
+                type = TYPE_RIGHT_DOWN;
+            }
         } else {
             type = TYPE_LEFT_DOWN;
         }
     } else if (posBefore.y < pos.y){
-        if (pos.x > posAfter.x){
+        if (posBefore.y - posAfter.y < -1){
+            if ((pos.x < posAfter.x && posAfter.x - pos.x == 1) || (pos.x > posAfter.x && posAfter.x - pos.x < -1)){
+                type = TYPE_RIGHT_DOWN;
+            } else {
+                type = TYPE_LEFT_DOWN;
+            }
+        } else if ((pos.x > posAfter.x && posBefore.x - posAfter.x == 1) || (pos.x < posAfter.x && posBefore.x - posAfter.x < -1)){
             type = TYPE_UP_LEFT;
         } else {
             type = TYPE_UP_RIGHT;
         }
     } else if (posBefore.x > pos.x){
-        if (pos.y > posAfter.y){
+        if (((pos.y > posAfter.y && posBefore.y - posAfter.y == 1) || (pos.y < posAfter.y && posBefore.y - posAfter.y < -1)) && posBefore.x - posAfter.x == 1){
             type = TYPE_UP_RIGHT;
+        } else if (posBefore.x - posAfter.x > 1){
+            if((pos.y > posAfter.y && pos.y - posAfter.y == 1) || (pos.y < posAfter.y && pos.y - posAfter.y < -1)){
+                type = TYPE_UP_LEFT;
+            } else {
+                type = TYPE_LEFT_DOWN;
+            }
         } else {
             type = TYPE_RIGHT_DOWN;
         }
     } else if (posBefore.y > pos.y){
-        if (pos.x > posAfter.x){
+        if ((pos.x > posAfter.x && posBefore.y - posAfter.y == 1 && posBefore.x - posAfter.x == 1) || (pos.x < posAfter.x && posBefore.x - posAfter.x < -1 && posBefore.y - posAfter.y == 1)){
             type = TYPE_LEFT_DOWN;
+        } else if (posAfter.y - posBefore.y < -1) {
+            if ((pos.x > posAfter.x && pos.x - posAfter.x == 1) || (pos.x < posAfter.x && pos.x - posAfter.x < -1)){
+                type = TYPE_UP_LEFT;
+            } else {
+                type = TYPE_UP_RIGHT;
+            }
         } else {
             type = TYPE_RIGHT_DOWN;
         }
