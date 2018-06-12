@@ -1,4 +1,5 @@
 
+@import '_iotacss';
 @import '_fonts';
 
 body{
@@ -13,20 +14,6 @@ body{
             margin-top: 0;
             padding-top: 20px;
         }
-    }
-    .container{
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto 0 auto;
-        .main-section{
-            padding-top: 10px;
-            float: left;
-            text-align: center;
-            width: 66%;
-        }
-    }
-    .canvas-grid{
-        margin: 0 auto 0 auto;
     }
 }
 
