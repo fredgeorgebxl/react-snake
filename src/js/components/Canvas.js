@@ -12,7 +12,7 @@ class ConnectedCanvas extends Component {
 
     render() {
         return (
-            <div className="canvas-grid" style={{width: this.props.width * 10 + 'px', height: this.props.height * 10 + 'px' }} >
+            <div className="o-container" style={{width: this.props.width * 10 + 'px', height: this.props.height * 10 + 'px' }} >
                 {
                     this.props.grid.map((x,i) => <div key={i} className={`cell-` + x}>&nbsp;</div>)
                 }

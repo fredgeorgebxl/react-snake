@@ -167,15 +167,15 @@ class ConnectedApp extends Component {
       return (
         <div className={`main-canvas ` + this.props.skin} onKeyDown={this.handleKey} tabIndex="0">
             <div className="o-container">
-                <header>
+                <header className="u-text-center">
                     <h1>React Snake</h1>
                     <div className="intro">A snake game in HTML and javascript made with React</div>
                 </header>
                 <div className="o-grid">
-                    <div className="o-grid__col u-2/3">
+                    <div className="o-grid__col u-2/3 u-text-center u-p">
                         <Canvas width={CANVAS_SIZE.width} height={CANVAS_SIZE.height} handleKey={this.handleKey} />
                     </div>
-                    <div className="o-grid__col u-1/3">
+                    <div className="o-grid__col u-1/3 u-text-center u-p">
                         <Score />
                     </div>
                 </div>

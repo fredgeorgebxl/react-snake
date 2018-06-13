@@ -1,3 +1,5 @@
+$iota-global-gutter-default: 20px;
+
 @import '~iotacss/settings/core';
 
 @import '~iotacss/tools/core';
@@ -9,3 +11,7 @@
 @import '~iotacss-components-button/_components.button';
 
 @import '~iotacss/utilities/size';
+@import '~iotacss/utilities/align-items';
+@import '~iotacss/utilities/text';
+@import '~iotacss/utilities/margin';
+@import '~iotacss/utilities/padding';
