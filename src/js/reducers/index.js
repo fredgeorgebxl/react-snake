@@ -4,6 +4,7 @@ const initialState = {
     grid: [],
     score: 0,
     skin: 'default',
+    startSpeed: INITIAL_SPEED,
     speed: INITIAL_SPEED
 };
 

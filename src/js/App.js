@@ -18,6 +18,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         skin: state.skin,
+        startSpeed: state.startSpeed,
         speed: state.speed
     };
 };
@@ -44,7 +45,6 @@ class ConnectedApp extends Component {
             apples: 0,
             lost: false,
             pause: true,
-            speed: this.props.speed,
             prevStage: 0
         }
     }
@@ -98,6 +98,7 @@ class ConnectedApp extends Component {
                     if(this.state.lost){
                         this.setState(this.getInitialState());
                         this.setState({pause: false});
+                        this.props.setSpeed(this.props.startSpeed);
                         this.props.resetScore();
                     } else {
                         this.setState({pause: !this.state.pause});
@@ -125,12 +126,13 @@ class ConnectedApp extends Component {
                 this.setState({appleIndex: getFreeIndex(grid)});
             } else if (eatApple){
                 //if apple is eaten
-                this.props.increaseScore(this.processScore(this.state.speed)); // increase score
+                this.props.increaseScore(this.processScore(this.props.speed)); // increase score
                 this.setState({appleIndex: -1, apples: this.state.apples + 1}); // make the apple disappear and increase counter
                 // Check if a next stage is reached
-                var nextStage = this.getNextStage(this.state.speed)
+                var nextStage = this.getNextStage(this.props.speed)
                 if (this.state.apples >= nextStage){
-                    this.setState({speed: this.state.speed + 1, prevStage: nextStage});
+                    this.props.setSpeed(this.props.speed + 1);
+                    this.setState({prevStage: nextStage});
                 }
             }
             // Add the apple to the canvas
@@ -151,7 +153,7 @@ class ConnectedApp extends Component {
             () => {
                 this.gameLoop();
             },
-            1000/this.state.speed
+            1000/this.props.speed
         );
     }
 
