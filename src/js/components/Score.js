@@ -9,9 +9,9 @@ const mapStateToProps = state => {
 };
 
 const ConnectedScore = ({score, speed}) => (
-    <div className="Score">
-        <div className="Score__score-pannel"><p className="label">Score: </p>{score}</div>
-        <div className="Score__speed-pannel"><p className="label">Speed: </p>{speed}</div>
+    <div className="score">
+        <div className="score__score-pannel"><p className="label">Score: </p>{score}</div>
+        <div className="score__speed-pannel"><p className="label">Speed: </p>{speed}</div>
     </div>
 );
 

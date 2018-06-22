@@ -169,9 +169,9 @@ class ConnectedApp extends Component {
       return (
         <div className={`main-canvas ` + this.props.skin} onKeyDown={this.handleKey} tabIndex="0">
             <div className="o-container">
-                <header className="u-text-center">
-                    <h1>React Snake</h1>
-                    <div className="intro">A snake game in HTML and javascript made with React</div>
+                <header className="header u-text-center">
+                    <h1 className="header__title">React Snake</h1>
+                    <div className="header__intro">A snake game in HTML and javascript made with React</div>
                 </header>
                 <div className="o-grid">
                     <div className="o-grid__col u-2/3 u-text-center u-p">
