@@ -1,4 +1,5 @@
 
+@import '~sass-bem/bem';
 @import '_iotacss';
 @import '_fonts';
 
@@ -13,11 +14,13 @@ body{
     margin-top: 0;
 }
 
-@for $i from 0 through 3{
-    .cell-#{$i} {
-        float: left;
-        width: 10px;
-        height: 10px;
+@include b(canvas){
+    @for $i from 0 through 3{
+        @include e(cell-#{$i}){
+            float: left;
+            width: 10px;
+            height: 10px;
+        }
     }
 }
 

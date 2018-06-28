@@ -1,7 +1,7 @@
 // General constants
 export const CANVAS_SIZE = {width: 15, height: 15};
 export const INITIAL_SIZE = 3;
-export const INITIAL_SPEED = 4;
+export const INITIAL_SPEED = 1;
 
 export const SKINS = ['default', 'bluemood'];
 

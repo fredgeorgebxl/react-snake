@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Canvas from './components/Canvas';
 import Score from './components/Score';
+import Options from './components/Options';
 import { CANVAS_SIZE, DIRECTION_UP, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT, INITIAL_SIZE } from './constants';
 import { connect } from 'react-redux';
 import { updateGrid, increaseScore, resetScore, setSpeed } from './actions/index';
@@ -153,7 +154,7 @@ class ConnectedApp extends Component {
             () => {
                 this.gameLoop();
             },
-            1000/this.props.speed
+            1000/(this.props.speed+3)
         );
     }
 
@@ -174,10 +175,12 @@ class ConnectedApp extends Component {
                     <div className="header__intro">A snake game in HTML and javascript made with React</div>
                 </header>
                 <div className="o-grid">
-                    <div className="o-grid__col u-2/3 u-text-center u-p">
+                    <div className="main-area o-grid__col u-2/3 u-text-center u-p">
+                        <Options />
                         <Canvas width={CANVAS_SIZE.width} height={CANVAS_SIZE.height} handleKey={this.handleKey} />
                     </div>
                     <div className="o-grid__col u-1/3 u-text-center u-p">
+                        <a className="options__display-link"><span className="genericons-neue genericons-neue-cog"></span> Options</a>
                         <Score />
                     </div>
                 </div>
