@@ -10,6 +10,13 @@ body{
     width: 100%;
     height: 100vh;
 }
+
+.main-area{
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh !important;
+}
+
 .header__title{
     margin-top: 0;
 }
@@ -21,6 +28,25 @@ body{
             width: 10px;
             height: 10px;
         }
+    }
+}
+
+@include b(options){
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include e(display-link){
+        display: block;
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+    @include m(hidden){
+        left: -1000px;
+        transition: left 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    @include m(visible){
+        left: 0;
+        transition: left 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 }
 

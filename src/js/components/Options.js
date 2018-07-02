@@ -15,7 +15,7 @@ class ConnectedOptions extends Component {
 
     render() {
         return (
-            <div className="options">
+            <div className={`options options--${this.props.visible ? 'visible' : 'hidden'}`}>
                 
             </div>
         );

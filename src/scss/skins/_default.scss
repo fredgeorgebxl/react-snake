@@ -30,6 +30,11 @@ $game__texture : url('../assets/' + $skin__name + '-textures.png');
         font-family: $font__content;
     }
 
+    /* Options panel */
+    @include b(options){
+        background-color: $color__secondary;
+    }
+
     /* Game canvas cells */
     @include b(canvas){
         padding: 0;

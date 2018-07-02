@@ -32,6 +32,14 @@ class ConnectedApp extends Component {
         this.state = this.getInitialState();
     }
 
+    switchOptions = () => {
+        if (this.state.options){
+            this.setState({options:false});
+        } else {
+            this.setState({pause:true, options:true});
+        } 
+    }
+
     getInitialState(){
         var startPos = initPos(CANVAS_SIZE.width, CANVAS_SIZE.height);
         return {
@@ -46,7 +54,8 @@ class ConnectedApp extends Component {
             apples: 0,
             lost: false,
             pause: true,
-            prevStage: 0
+            prevStage: 0,
+            options: false
         }
     }
 
@@ -176,11 +185,11 @@ class ConnectedApp extends Component {
                 </header>
                 <div className="o-grid">
                     <div className="main-area o-grid__col u-2/3 u-text-center u-p">
-                        <Options />
+                        <Options visible={this.state.options} />
                         <Canvas width={CANVAS_SIZE.width} height={CANVAS_SIZE.height} handleKey={this.handleKey} />
                     </div>
                     <div className="o-grid__col u-1/3 u-text-center u-p">
-                        <a className="options__display-link"><span className="genericons-neue genericons-neue-cog"></span> Options</a>
+                        <a className="options__display-link" onClick={this.switchOptions}><span className="genericons-neue genericons-neue-cog"></span> Options</a>
                         <Score />
                     </div>
                 </div>
