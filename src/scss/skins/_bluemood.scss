@@ -1,8 +1,107 @@
-.bluemood{
-    background-color:darkblue;
+$skin__name : 'bluemood';
+$color__background : rgb(44, 68, 175);
+$color__primary : #75b5ff;
+$color__secondary : #ade2f0;
+$color__text : #222;
+$font__title : alpha_echoregular, Arial, Helvetica, sans-serif;
+$font__content : $font__title;
 
-    .cell-0{ background-color: rgb(219, 242, 250);}
-    .cell-1{background-color: rgb(7, 27, 114);}
-    .cell-2{background-color: rgb(57, 124, 226);}
-    .cell-3{background-color: rgb(163, 255, 247);}
+$game__background : #ededed;
+$game__texture : url('../assets/' + $skin__name + '-textures.png');
+
+@include b($skin__name){
+    background-color: $color__background;
+    /* Header */
+    @include b(header){
+        padding: 1em;
+        border-bottom: 2px solid $color__primary;
+        @include e(title){
+            font-family: $font__title;
+        }
+        @include e(intro){
+            font-family: $font__content;
+        }
+    }
+
+    /* Score */
+    @include b(score){
+        padding: 1em;
+        background-color: $color__secondary;
+        font-family: $font__content;
+    }
+
+    /* Options panel */
+    @include b(options){
+        background-color: $color__secondary;
+        label{
+            font-family: $font__title;
+        }
+    }
+
+    /* Sliders */
+    .rc-slider-track{
+        background-color: $color__primary;
+    }
+    .rc-slider-handle{
+        border : 2px solid $color__primary;
+    }
+
+    /* Game canvas cells */
+    @include b(canvas){
+        padding: 0;
+        background-color: $game__background;
+        @include e(cell-0){ background-color: $game__background;}
+        @include parse('e:cell-1', 'e:cell-2', 'e:cell-3'){
+            background-color: $game__background;
+            background-image: $game__texture;
+        }
+        @include e(cell-1){
+            &.up{
+                background-position: -20px 0px;
+            }
+            &.down{
+                background-position: 0px 0px;
+            }
+            &.left{
+                background-position: -10px 0px;
+            }
+            &.right{
+                background-position: -30px 0px;
+            }
+        }
+        @include e(cell-2){
+            background-position: 0px -10px;
+            &.ud{
+                background-position: 0px -10px;
+            }
+            &.lr{
+                background-position: -10px -10px;
+            }
+            &.ul{
+                background-position: -20px -10px;
+            }
+            &.ur{
+                background-position: -30px -10px;
+            }
+            &.ld{
+                background-position: -40px -10px;
+            }
+            &.rd{
+                background-position: 0px -20px;
+            }
+            &.up{
+                background-position: 0px -30px;
+            }
+            &.down{
+                background-position: -20px -30px;
+            }
+            &.left{
+                background-position: -30px -30px;
+            }
+            &.right{
+                background-position: -10px -30px;
+            }
+        }
+        @include e(cell-3){background-position: -40px -40px;}
+    }
 }

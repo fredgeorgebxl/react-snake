@@ -34,10 +34,14 @@ class ConnectedApp extends Component {
 
     switchOptions = () => {
         if (this.state.options){
-            this.setState({options:false});
+            this.closeOptions();
         } else {
             this.setState({pause:true, options:true});
         } 
+    }
+
+    closeOptions = () => {
+        this.setState({options:false});
     }
 
     getInitialState(){
@@ -64,7 +68,7 @@ class ConnectedApp extends Component {
     }
 
     getNextStage(speed){
-        return this.state.prevStage + 6 + Math.round(Math.pow((speed)/2, 1.5));
+        return this.state.prevStage + 10 + Math.round(Math.pow((speed)/2, 1.5));
     }
 
     getInterval(speed){
@@ -139,8 +143,10 @@ class ConnectedApp extends Component {
                 this.props.increaseScore(this.processScore(this.props.speed)); // increase score
                 this.setState({appleIndex: -1, apples: this.state.apples + 1}); // make the apple disappear and increase counter
                 // Check if a next stage is reached
+                console.log(this.state.apples);
                 var nextStage = this.getNextStage(this.props.speed)
                 if (this.state.apples >= nextStage){
+                    console.log(nextStage, this.props.speed);
                     this.props.setSpeed(this.props.speed + 1);
                     this.setState({prevStage: nextStage});
                 }
@@ -185,7 +191,7 @@ class ConnectedApp extends Component {
                 </header>
                 <div className="o-grid">
                     <div className="main-area o-grid__col u-2/3 u-text-center u-p">
-                        <Options visible={this.state.options} />
+                        <Options visible={this.state.options} closePannel={this.closeOptions} />
                         <Canvas width={CANVAS_SIZE.width} height={CANVAS_SIZE.height} handleKey={this.handleKey} />
                     </div>
                     <div className="o-grid__col u-1/3 u-text-center u-p">

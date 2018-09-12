@@ -33,6 +33,17 @@ $game__texture : url('../assets/' + $skin__name + '-textures.png');
     /* Options panel */
     @include b(options){
         background-color: $color__secondary;
+        label{
+            font-family: $font__title;
+        }
+    }
+
+    /* Sliders */
+    .rc-slider-track{
+        background-color: $color__primary;
+    }
+    .rc-slider-handle{
+        border : 2px solid $color__primary;
     }
 
     /* Game canvas cells */

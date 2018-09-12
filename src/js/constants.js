@@ -22,6 +22,8 @@ export const UPDATE_GRID = 'UPDATE_GRID';
 export const RESET_SCORE = 'RESET_SCORE';
 export const INCREASE_SCORE = 'INCREASE_SCORE';
 export const SET_SPEED = 'SET_SPEED';
+export const SET_SKIN = 'SET_SKIN';
+export const SET_INIT_SPEED = 'SET_INIT_SPEED';
 
 // Segments types
 export const TYPE_UP_DOWN = 'ud';

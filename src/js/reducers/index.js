@@ -1,4 +1,4 @@
-import { UPDATE_GRID, RESET_SCORE, INCREASE_SCORE, INITIAL_SPEED, INCREASE_SPEED, SET_SPEED } from '../constants';
+import { UPDATE_GRID, RESET_SCORE, INCREASE_SCORE, INITIAL_SPEED, INCREASE_SPEED, SET_SPEED, SET_INIT_SPEED, SET_SKIN } from '../constants';
 
 const initialState = {
     grid: [],
@@ -34,6 +34,16 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 speed : action.payload
+            }
+        case SET_INIT_SPEED:
+            return {
+                ...state,
+                startSpeed : action.payload
+            }
+        case SET_SKIN:
+            return {
+                ...state,
+                skin : action.payload
             }
         default:
             return state;
